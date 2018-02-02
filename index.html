@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ot.js Demo</title>
+
+  <!-- ot.js -->
+  <script src="ot.js/text-operation.js"></script>
+  <script src="ot.js/selection.js"></script>
+  <script src="ot.js/wrapped-operation.js"></script>
+  <script src="ot.js/undo-manager.js"></script>
+  <script src="ot.js/client.js"></script>
+  <script src="ot.js/codemirror-adapter.js"></script>
+  <script src="ot.js/socketio-adapter.js"></script>
+  <script src="ot.js/editor-client.js"></script>
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+  <script src="node_modules/codemirror/lib/codemirror.js"></script>
+  <!-- socket.io -->
+  <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+</head>
+<body>
+  <textarea id="note"></textarea>
+  <!-- init client -->
+  <script>
+    var socket = io()
+    socket.on('doc', function(data) {
+      var cm = CodeMirror.fromTextArea(document.getElementById('note'), {lineNumbers: true})
+      cm.setValue(data.str)
+      var serverAdapter = new ot.SocketIOAdapter(socket)
+      var editorAdapter = new ot.CodeMirrorAdapter(cm)
+      var client = new ot.EditorClient(data.revision, data.clients, serverAdapter, editorAdapter)
+    })
+  </script>
+</body>
+</html>

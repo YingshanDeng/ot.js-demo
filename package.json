@@ -1,0 +1,32 @@
+{
+  "name": "ot.js-demo",
+  "version": "1.0.0",
+  "description": "simple demo for ot.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YingshanDeng/ot.js-demo.git"
+  },
+  "keywords": [
+    "demo",
+    "ot.js",
+    "Operational",
+    "transformation",
+    "OT"
+  ],
+  "author": "YingshanDeng <yingshandeng@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YingshanDeng/ot.js-demo/issues"
+  },
+  "homepage": "https://github.com/YingshanDeng/ot.js-demo#readme",
+  "dependencies": {
+    "codemirror": "^5.34.0",
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
